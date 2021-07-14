@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "cached_path"
+version = "0.1.0-dev"
+description = "Use URLs as if they were local paths."
+authors = ["Santiago Castro <sacastro@umich.edu>"]
+license = "Apache-2.0"
+
+readme = "README.md"
+
+homepage = "https://github.com/bryant1410/cached_path"
+repository = "https://github.com/bryant1410/cached_path"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+boto3 = "*"
+botocore = "*"
+requests = "*"
+filelock = "*"
+tqdm = "*"
+
+rarfile = { version = "*", optional = true }
+
+[tool.poetry.extras]
+rar = ["rarfile"]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
