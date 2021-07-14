@@ -17,9 +17,10 @@ boto3 = "*"
 botocore = "*"
 requests = "*"
 filelock = "*"
-tqdm = "*"
-
 rarfile = { version = "*", optional = true }
+tqdm = "*"
+typing-extensions = "*"
+
 
 [tool.poetry.extras]
 rar = ["rarfile"]

@@ -12,7 +12,7 @@ from functools import wraps
 from hashlib import sha256
 from os import PathLike
 from pathlib import Path
-from typing import Any, Callable, IO, Literal, Optional, Tuple, Union
+from typing import Any, Callable, IO, Optional, Tuple, Union
 from urllib.parse import urlparse
 
 import boto3
@@ -25,6 +25,7 @@ from requests.adapters import HTTPAdapter
 from requests.exceptions import ConnectionError
 from requests.packages.urllib3.util.retry import Retry
 from tqdm import tqdm
+from typing_extensions import Literal
 
 TYPE_PATH = Union[PathLike, str, bytes]  # See https://stackoverflow.com/a/53418245/1165181
 
