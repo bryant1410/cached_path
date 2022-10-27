@@ -166,7 +166,26 @@ def _extract(file_path: TYPE_PATH, extraction_path: TYPE_PATH, url_or_filename: 
                 file.extractall(extraction_path)
         elif tarfile.is_tarfile(file_path):
             with tarfile.open(file_path) as file:
-                file.extractall(extraction_path)
+                def is_within_directory(directory, target):
+                    
+                    abs_directory = os.path.abspath(directory)
+                    abs_target = os.path.abspath(target)
+                
+                    prefix = os.path.commonprefix([abs_directory, abs_target])
+                    
+                    return prefix == abs_directory
+                
+                def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+                
+                    for member in tar.getmembers():
+                        member_path = os.path.join(path, member.name)
+                        if not is_within_directory(path, member_path):
+                            raise Exception("Attempted Path Traversal in Tar File")
+                
+                    tar.extractall(path, members, numeric_owner=numeric_owner) 
+                    
+                
+                safe_extract(file, extraction_path)
         else:
             import rarfile
             if rarfile.is_rarfile(file_path):
