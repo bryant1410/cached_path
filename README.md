@@ -20,3 +20,4 @@ then adapted.
 * [ ] Merge with the latest from allenai/allennlp.
 * [ ] Add tests, including the ones under allenai/allennlp.
 * [ ] Make AWS dependencies optional.
+* [ ] An offline mode (no HEAD request).
